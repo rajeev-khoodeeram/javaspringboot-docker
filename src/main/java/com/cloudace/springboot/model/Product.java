@@ -14,6 +14,10 @@ public class Product {
         this.price = price;
     }
 
+    public Product() {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters and Setters
     public Long getId() {
         return id;
