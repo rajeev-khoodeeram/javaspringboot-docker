@@ -29,7 +29,7 @@ jobs:
       - name: Check DOCKER_USERNAME secret
         run: |
           USERNAME="${{ secrets.DOCKER_USERNAME }}"
-          echo "Docker username starts with: ${USERNAME:0:3}..."
+          echo "Docker username starts with: ${USERNAME:0:3} wow"
         
 
       - name: Build Docker image
