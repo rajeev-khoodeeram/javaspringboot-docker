@@ -22,7 +22,7 @@ public class ProductController {
 
     
     @GetMapping("/products/{id}")
-    public Product getProduct(@PathVariable int id) {
+    public ResponseEntity<Product> getProduct(@PathVariable int id) {
         // This method will return a product based on the provided id
         // For now, it will just return a dummy product
        
@@ -36,7 +36,13 @@ public class ProductController {
        Product product;  
        ProductService productService = new ProductService();
        product = productService.getProductById(id);  
-       return product;
+
+      if (product == null) {
+        return ResponseEntity.notFound().build();
+      }
+      return ResponseEntity.ok(product);
+
+      // / return product;
     }
         
     
@@ -60,9 +66,15 @@ public class ProductController {
     @PostMapping("/products")
      public ResponseEntity<Product> addProduct(@RequestBody Product product) { 
         ProductService productService = new ProductService();
-        Product nProduct =productService.addProduct(product);
-    
-        return ResponseEntity.status(HttpStatus.CREATED).body(nProduct);
+        
+      if ((product.getId()== null) || (product.getName().length()==0)) {
+          return ResponseEntity.badRequest().build();
+          }
+          else
+          {
+            Product nProduct =productService.addProduct(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nProduct);
+          }
       }
     // public void updateProduct(Long id, Product product) { ... }
     // public void deleteProduct(Long id) { ... }
