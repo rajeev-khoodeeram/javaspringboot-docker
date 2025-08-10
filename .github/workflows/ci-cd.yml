@@ -25,8 +25,11 @@ jobs:
 
       - name: Build with Maven
         run: ./mvnw clean package --no-transfer-progress
+
       - name: Check DOCKER_USERNAME secret
-        run: echo "DOCKER_USERNAME is set"
+        run: |
+          USERNAME="${{ secrets.DOCKER_USERNAME }}"
+          echo "Docker username starts with: ${USERNAME:0:3}..."
         
 
       - name: Build Docker image
