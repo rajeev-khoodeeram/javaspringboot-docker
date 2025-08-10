@@ -37,10 +37,10 @@ public class ProductController {
        ProductService productService = new ProductService();
        product = productService.getProductById(id);  
 
-      if (product == null) {
+      if (product.getName().length() == 0) {
         return ResponseEntity.notFound().build();
       }
-      return ResponseEntity.ok(product);
+      return new ResponseEntity<>(product, HttpStatus.OK);
 
       // / return product;
     }
@@ -67,13 +67,11 @@ public class ProductController {
      public ResponseEntity<Product> addProduct(@RequestBody Product product) { 
         ProductService productService = new ProductService();
         
-      if ((product.getId()== null) || (product.getName().length()==0)) {
+          if (product.getName().length() ==0)  
           return ResponseEntity.badRequest().build();
-          }
-          else
-          {
-            Product nProduct =productService.addProduct(product);
-            return ResponseEntity.status(HttpStatus.CREATED).body(nProduct);
+          else{
+          Product nProduct =productService.addProduct(product);
+          return ResponseEntity.status(HttpStatus.CREATED).body(nProduct);
           }
       }
     // public void updateProduct(Long id, Product product) { ... }

@@ -72,20 +72,21 @@ public class ProductControllerTest {
     @Test
     void testGetProduct() throws Exception {
 
-
+        Product p = new  Product(1L, "Product 1", "Description of Product 1", 34.50);
         
         // `when(...).thenReturn(...)` is the core of Mockito, telling it how to behav
-        when(productService.getProductById(1)).thenReturn(new Product(1L, "Product 1", "Description of Product 1", 34.50));
+        when(productService.getProductById(1)).thenReturn(p);
 
         // This test will verify that the getProduct method returns a product by ID
         // You can use mockMvc to perform a GET request with a specific product ID
         // For example, you can check if the response status is OK and if the returned product has the expected properties
-        int productId = 1; // Example product ID
-        mockMvc.perform(get("/products/" + productId))
+        
+        mockMvc.perform(get("/products/" + p.getId()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Product 1"))
-                .andExpect(jsonPath("$.description").value("Description of Product 1"))
-                .andExpect(jsonPath("$.price").value(34.50));
+                .andExpect(jsonPath("$.name").value("Product "+ p.getId()))
+                .andExpect(jsonPath("$.description").value("Description of Product "+ p.getId()))
+                .andExpect(jsonPath("$.price").value(p.getPrice()));
+            
     }
 
     /* commented for CI-CD workflow ; uncomment for test
@@ -132,7 +133,7 @@ public class ProductControllerTest {
                 .contentType("application/json")
                 .content("{\"name\":\"\",\"description\":\"Invalid Product\",\"price\":-10.00}"))
                 .andExpect(status().isBadRequest());            
-                }
+    }
 
 
     

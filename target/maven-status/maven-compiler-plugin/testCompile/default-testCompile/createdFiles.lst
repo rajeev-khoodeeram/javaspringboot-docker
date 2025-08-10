@@ -1,2 +1,3 @@
 com/cloudace/springboot/SpringbootApplicationTests.class
 com/cloudace/springboot/controllers/ProductControllerTest.class
+com/cloudace/springboot/controllers/ProductNotFoundException.class

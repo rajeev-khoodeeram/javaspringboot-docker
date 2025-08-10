@@ -21,7 +21,7 @@ public class ProductService {
         // For now, returning a dummy product
         Product product = new Product();
         product.setName("Product " + id);
-        product.setDescription("This is product " + id);
+        product.setDescription("Description of Product " + id);
         product.setPrice(34.50);
         return product;
     }
