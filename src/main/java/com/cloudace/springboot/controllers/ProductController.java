@@ -77,6 +77,7 @@ public class ProductController {
     // public void updateProduct(Long id, Product product) { ... }
      public void deleteProduct(Long id) { 
       //this is a test
+      //Logic to delete a product by its ID
      }
 
     
