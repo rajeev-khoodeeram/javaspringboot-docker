@@ -28,19 +28,19 @@ jobs:
 
       - name: Check DOCKER_USERNAME secret
         run: |
-          USERNAME="${{ DOCKER_USERNAME }}"
+          USERNAME="${{ secrets.DOCKER_USERNAME }}"
           echo "Docker username starts with: ${USERNAME:0:3} wow"
         
 
       - name: Build Docker image
-        run: docker build -t ${{ DOCKER_USERNAME }}/dockergitspring-app:${{ github.sha }} .
+        run: docker build -t rajeevmauritius/dockergitspring-app:${{ github.sha }} .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: rajeevmauritius
+          password: dckr_pat_raA-hslxZhJRxzODIacnKSrgmPs
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/dockergitspring-app:${{ github.sha }}
+        run: docker push rajeevmauritius/dockergitspring-app:${{ github.sha }}
 
