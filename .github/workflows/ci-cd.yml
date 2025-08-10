@@ -25,6 +25,9 @@ jobs:
 
       - name: Build with Maven
         run: ./mvnw clean package --no-transfer-progress
+      - name: Check DOCKER_USERNAME secret
+        run: echo "DOCKER_USERNAME is set"
+        
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/dockergitspring-app:${{ github.sha }} .
