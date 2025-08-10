@@ -76,7 +76,7 @@ public class ProductController {
       }
     // public void updateProduct(Long id, Product product) { ... }
      public void deleteProduct(Long id) { 
-      
+      //this is a test
      }
 
     
