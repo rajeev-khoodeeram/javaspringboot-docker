@@ -35,7 +35,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                    sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials-id') {
-                        sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
                     }
                 }
             }
