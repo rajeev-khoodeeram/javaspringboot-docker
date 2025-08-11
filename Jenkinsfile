@@ -9,6 +9,8 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
         IMAGE_NAME = 'rajeevmauritius/myapp'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
+        PATH = "/opt/homebrew/bin/docker"
+  
     }
 
     stages {
