@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+        maven 'rajeev-maven'  // name you gave in Global Tool Config
+    }
+ 
 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
