@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'rajeev-maven'  // name you gave in Global Tool Config
+        maven 'Rajeev-maven'  // name you gave in Global Tool Config
     }
  
 
