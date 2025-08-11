@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/rajeev-khoodeeram/JavaFullStack.git'
+                git branch: 'feature/initial-project', url: 'https://github.com/rajeev-khoodeeram/JavaFullStack.git'
             }
         }
 
