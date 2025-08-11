@@ -42,11 +42,11 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials-id') {
-                        sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-                    }
-                }
+                sh """
+                    echo ${DOCKER_HUB_CREDENTIALS_PSW} | docker login -u ${DOCKER_HUB_CREDENTIALS_USR} --password-stdin
+                    docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                    docker logout
+                  """
             }
         }
 
