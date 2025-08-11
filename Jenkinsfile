@@ -6,6 +6,7 @@ pipeline {
  
 
     environment {
+        PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
         IMAGE_NAME = 'rajeevmauritius/myapp'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
