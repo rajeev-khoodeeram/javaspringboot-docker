@@ -22,7 +22,7 @@ public class ProductService {
         Product product = new Product();
         product.setName("Product " + id);
         product.setDescription("Description of Product " + id);
-        product.setPrice(34.50);
+        product.setPrice(44.50);
         return product;
     }
 
@@ -33,7 +33,7 @@ public class ProductService {
         // Logic to retrieve all products
         // For now, returning a sample list
         List<Product> products = new ArrayList<>();
-        products.add(new Product(1L, "Laptop", "This is a sample product description", 19.99));
+        products.add(new Product(1L, "HP Laptop", "This is a sample product description", 19.99));
         products.add(new Product(2L, "Mouse", "This is another product description", 29.99));
         return products; // Returning a sample list for now
     }
