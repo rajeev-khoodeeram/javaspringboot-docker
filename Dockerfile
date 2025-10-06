@@ -1,15 +1,25 @@
-# Use official OpenJDK base image
+# Use a lightweight base image
 FROM openjdk:24-jdk-slim
 
-# Set environment variables
-ENV APP_HOME=/app
-WORKDIR $APP_HOME
+# Metadata
+LABEL maintainer="SecInfra-Automation-Labs" \
+      description="Spring Boot Docker image"
 
-# Copy the JAR file into the container (adjust path as needed)
+# Working directory
+WORKDIR /app
+
+# Copy built JAR
 COPY target/*.jar app.jar
 
-# Expose port (change to your Spring Boot server.port if needed)
+# Optional: install debugging tools
+RUN apt update && apt install -y --no-install-recommends curl net-tools && apt clean
+
+# Expose Spring Boot port
 EXPOSE 8080
 
-# Run the Spring Boot app
+# Default environment
+ENV SERVER_PORT=8080
+ENV SERVER_ADDRESS=0.0.0.0
+
+# Start the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
